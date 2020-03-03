@@ -84,6 +84,12 @@ jobs:
         chmod +x ./customize.sh && ./customize.sh
         cd openwrt && make defconfig
         
+        #增加日期标签
+        cat >> .config <<EOF
+        CONFIG_KERNEL_BUILD_USER="eSir on $(date)"
+        CONFIG_GRUB_TITLE="Lean OpenWrt AutoBuild by eSir on $(date)"
+        EOF
+        
     - name: Download package
       working-directory: ./openwrt
       run: |
