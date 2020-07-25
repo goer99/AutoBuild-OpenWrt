@@ -98,8 +98,12 @@ jobs:
       run: |
         echo -e "$(nproc) thread build."
         make -j$(nproc) V=s
+        
+    - name: Delete the packages and Prepare artifact
+      run: find ./openwrt/bin/targets/ -type d -name "packages" | xargs rm -rf {}
+          
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
         name: OpenWrt
-        path: openwrt/bin
+        path: openwrt/bin/targets/
