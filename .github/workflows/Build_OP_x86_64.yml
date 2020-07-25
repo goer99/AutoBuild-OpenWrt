@@ -98,12 +98,14 @@ jobs:
       run: |
         echo -e "$(nproc) thread build."
         make -j$(nproc) V=s
-        
+
+        echo "::set-env name=FILE_DATE::_$(date +"%Y%m%d%H%M")"
+
     - name: Delete the packages and Prepare artifact
       run: find ./openwrt/bin/targets/ -type d -name "packages" | xargs rm -rf {}
           
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
-        name: OpenWrt
+        name: OpenWrt_eSir_${{ env.FILE_DATE }}
         path: openwrt/bin/targets/
