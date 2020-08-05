@@ -9,11 +9,11 @@
 name: Merge-upstream
 
 on:
-  push:
-    branches: 
-      - master
+  #push:
+  #  branches: 
+  #    - master
   schedule:
-    - cron: 0 7 * * 5
+    - cron: 0 0 * * 5
 
 jobs:
   merge:
