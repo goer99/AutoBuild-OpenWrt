@@ -14,12 +14,14 @@ on:
   #push:
   #  branches: 
   #    - master
-
+    
+  #watch:
+  #  types: [started]
+    
   schedule:
     - cron: 0 8 15 * *
   
-  watch:
-    types: [started]
+  workflow_dispatch:
 
 jobs:
   build:
