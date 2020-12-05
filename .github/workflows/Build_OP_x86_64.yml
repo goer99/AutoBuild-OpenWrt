@@ -104,7 +104,7 @@ jobs:
         echo -e "$(nproc) thread build."
         make -j$(nproc) V=s
 
-        echo "::set-env name=FILE_DATE::_$(date +"%Y%m%d%H%M")"
+        echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
 
     - name: Delete the packages and Prepare artifact
       run: find ./openwrt/bin/targets/ -type d -name "packages" | xargs rm -rf {}
